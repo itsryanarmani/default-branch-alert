@@ -34,7 +34,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - uses: pooriaarab/default-branch-alert@v1.0.0
+      - uses: itsryanarmani/default-branch-alert@v1.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ needs.deploy.result }}
@@ -52,7 +52,7 @@ make sure that job already carries (or gets) `issues: write`:
 ```yaml
       - name: Report default-branch status
         if: always() && (success() || failure()) && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
-        uses: pooriaarab/default-branch-alert@v1.0.0
+        uses: itsryanarmani/default-branch-alert@v1.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           status: ${{ job.status }}
@@ -85,7 +85,7 @@ ships as a new tag (`v1.0.1`, `v1.1.0`, ...); the old tag keeps pointing at
 the old commit forever.
 
 This is a deliberate departure from
-[`pooriaarab/vibecodereview`](https://github.com/pooriaarab/vibecodereview),
+[`itsryanarmani/vibecodereview`](https://github.com/itsryanarmani/vibecodereview),
 which uses a moving `@v1` — and that's the right call *for that action*, not
 a mistake to copy here. The difference is the consequence of a bad
 propagation, not a general preference for pinning:
